@@ -147,7 +147,10 @@ Railway detects the push and auto-redeploys in ~1 minute. Your database, uploads
 → The first time the app boots on a fresh volume, it seeds an admin from `ADMIN_EMAIL` / `ADMIN_PASSWORD`. If those variables weren't set when the volume was empty, it used the defaults (`admin@osmantech.ng` / `admin123`). Try those, or [open a Railway shell](https://docs.railway.com/guides/cli) and delete `/data/osmantech.db` to re-seed.
 
 **Build fails on `better-sqlite3`**
-→ Railway uses Nixpacks which compiles native modules automatically. If the build fails, check that your `package.json` has `"engines": { "node": ">=18.0.0" }` — already set.
+→ This usually means Railway picked Node 24+ which doesn't yet have prebuilt binaries. The project's `package.json` pins `"engines": { "node": "22.x" }` to fix this. If you hit this error after upgrading from an older version of the codebase, **delete `package-lock.json` from your repo and redeploy** — this forces npm to resolve fresh versions. (Or just `git pull` the latest from this zip.)
+
+**Build fails on `better-sqlite3`** *(other reasons)*
+→ Railway uses Nixpacks which compiles native modules automatically. If the build fails for some other reason, check that your `package.json` has `"engines": { "node": "22.x" }`.
 
 **Can I run multiple instances (replicas)?**
 → Not with SQLite + a volume. Railway docs explicitly note that *"replicas cannot be used with volumes."* Stick to one instance — it can easily handle thousands of visitors per day. If you outgrow it, migrate to PostgreSQL.
