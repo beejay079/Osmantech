@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard · OSMANTECH</title>
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <section>
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> · <span>Dashboard</span></div>
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">My account</div>
+          <h2 id="greeting">Welcome back</h2>
+        </div>
+        <a href="/admin" id="admin-link" class="btn btn-dark" style="display:none;">Admin panel →</a>
+      </div>
+
+      <div class="grid grid-4 mb-6">
+        <div class="stat-card"><div class="label">My orders</div><div class="value" id="count-orders">—</div></div>
+        <div class="stat-card"><div class="label">Listings</div><div class="value" id="count-listings">—</div></div>
+        <div class="stat-card"><div class="label">Swap requests</div><div class="value" id="count-swaps">—</div></div>
+        <div class="stat-card"><div class="label">Repair bookings</div><div class="value" id="count-repairs">—</div></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="orders">Orders</button>
+        <button class="tab" data-tab="listings">My listings</button>
+        <button class="tab" data-tab="swaps">Swaps</button>
+        <button class="tab" data-tab="repairs">Repairs</button>
+        <button class="tab" data-tab="profile">Profile</button>
+      </div>
+
+      <div id="tab-orders" class="tab-panel"><div class="loading"></div></div>
+      <div id="tab-listings" class="tab-panel hidden"></div>
+      <div id="tab-swaps" class="tab-panel hidden"></div>
+      <div id="tab-repairs" class="tab-panel hidden"></div>
+      <div id="tab-profile" class="tab-panel hidden"></div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shop · OSMANTECH</title>
+  <meta name="description" content="Browse phones, laptops, smartwatches, accessories and games. All verified sellers.">
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <section style="padding: 2rem 0 1rem;">
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> · <span>Shop</span></div>
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Marketplace</div>
+          <h2 id="shop-title">All products</h2>
+        </div>
+        <div style="display:flex;gap:.5rem;align-items:center;">
+          <input type="search" id="search" class="input" placeholder="Search gadgets…" style="min-width:240px;">
+          <select id="sort" class="select" style="width:160px;">
+            <option value="newest">Newest</option>
+            <option value="price-asc">Price: low → high</option>
+            <option value="price-desc">Price: high → low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem;">
+    <div class="container">
+      <div class="shop-layout">
+        <aside class="filters" id="filters"><!-- filled by shop.js --></aside>
+        <div>
+          <div id="product-count" class="muted small mb-4"></div>
+          <div class="grid grid-3" id="product-grid">
+            <div class="card"><div class="skeleton" style="aspect-ratio:4/3"></div><div class="card-body"><div class="skeleton" style="height:1rem;margin-bottom:.5rem"></div><div class="skeleton" style="height:1.4rem;width:60%"></div></div></div>
+            <div class="card"><div class="skeleton" style="aspect-ratio:4/3"></div><div class="card-body"><div class="skeleton" style="height:1rem;margin-bottom:.5rem"></div><div class="skeleton" style="height:1.4rem;width:60%"></div></div></div>
+            <div class="card"><div class="skeleton" style="aspect-ratio:4/3"></div><div class="card-body"><div class="skeleton" style="height:1rem;margin-bottom:.5rem"></div><div class="skeleton" style="height:1.4rem;width:60%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/shop.js"></script>
+</body>
+</html>

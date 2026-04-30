@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sell your phone · OSMANTECH</title>
+  <meta name="description" content="Sell your phone to OSMANTECH — fill the form and we'll respond on WhatsApp instantly.">
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <section>
+    <div class="container" style="max-width:780px;">
+      <div class="crumbs"><a href="/">Home</a> · <span>Sell</span></div>
+      <div class="eyebrow">💰 Sell your phone</div>
+      <h2 style="margin:.5rem 0 .75rem;">Fill this for your sell deal</h2>
+      <p class="muted mb-6">Enter your phone details below — when you submit, WhatsApp opens with your details pre-filled. We respond within minutes.</p>
+
+      <div class="card card-body">
+        <form id="trade-form">
+
+          <h4 style="margin-bottom:1rem;">📱 Current Phone Details</h4>
+
+          <div class="field">
+            <label>Brand *</label>
+            <select class="select" id="brand" required>
+              <option value="">Select brand…</option>
+              <option value="iPhone">iPhone (Apple)</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Tecno">Tecno</option>
+              <option value="Infinix">Infinix</option>
+              <option value="Xiaomi">Xiaomi / Redmi</option>
+              <option value="Oppo">Oppo</option>
+              <option value="Vivo">Vivo</option>
+              <option value="Realme">Realme</option>
+              <option value="Huawei">Huawei</option>
+              <option value="Google">Google Pixel</option>
+              <option value="Other Android">Other Android</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Model name *</label>
+            <input class="input" id="model" required placeholder="e.g. iPhone 13 Pro Max, Samsung S22 Ultra, Tecno Camon 20">
+          </div>
+
+          <!-- iPhone-specific: Storage only -->
+          <div id="iphone-storage-block" style="display:none;">
+            <div class="field-row">
+              <div class="field">
+                <label>Storage (GB) *</label>
+                <select class="select" id="storage">
+                  <option value="">Select…</option>
+                  <option>64</option><option>128</option><option>256</option>
+                  <option>512</option><option>1024</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Battery Health (%)</label>
+                <input type="number" min="0" max="100" class="input" id="batteryHealth" placeholder="e.g. 92">
+              </div>
+            </div>
+          </div>
+
+          <!-- Android-specific: RAM + ROM -->
+          <div id="android-specs-block" style="display:none;">
+            <div class="field-row">
+              <div class="field">
+                <label>RAM (GB) *</label>
+                <select class="select" id="ram">
+                  <option value="">Select…</option>
+                  <option>2</option><option>3</option><option>4</option><option>6</option>
+                  <option>8</option><option>12</option><option>16</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>ROM (GB) *</label>
+                <select class="select" id="rom">
+                  <option value="">Select…</option>
+                  <option>32</option><option>64</option><option>128</option>
+                  <option>256</option><option>512</option><option>1024</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Battery Health (%)</label>
+              <input type="number" min="0" max="100" class="input" id="androidBattery" placeholder="If known, e.g. 90">
+              <div class="hint">Optional for Android — most can show this in Settings → Battery.</div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>Receipt Available?</label>
+              <select class="select" id="receipt">
+                <option value="✅ Yes (have receipt)">✅ Yes (have receipt)</option>
+                <option value="❌ No (no receipt)">❌ No (no receipt)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Condition *</label>
+              <select class="select" id="condition" required>
+                <option value="">Select…</option>
+                <option>10/10 — Like new</option>
+                <option>9/10 — Excellent</option>
+                <option>8/10 — Very good</option>
+                <option>7/10 — Good</option>
+                <option>6/10 — Fair (minor scratches)</option>
+                <option>5/10 — Used (visible wear)</option>
+                <option>Faulty / Needs repair</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Repair History</label>
+            <textarea class="textarea" id="repairHistory" placeholder="Has the phone been repaired before? Battery replacement? Screen change? (Type 'None' if never repaired)"></textarea>
+          </div>
+
+          <div class="field">
+            <label>📸 Phone Photos (recommended) *</label>
+            <div id="photo-uploader-host"></div>
+            <div class="hint">Upload up to 5 photos of your phone (front, back, screen on, accessories). Max 5 MB each. The links will be included in your WhatsApp message so we can review before chatting.</div>
+          </div>
+
+          <!-- iPhone 14+ extras -->
+          <div id="iphone-14-block" style="display:none;background:var(--orange-50);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+            <h4 style="color:var(--orange);margin-bottom:.75rem;">📌 iPhone 14 Series & Above Only</h4>
+            <div class="field-row">
+              <div class="field">
+                <label>SIM Type</label>
+                <select class="select" id="simType">
+                  <option value="">Select…</option>
+                  <option>Physical only</option>
+                  <option>eSIM only</option>
+                  <option>Physical + eSIM</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Model Type</label>
+                <select class="select" id="modelType">
+                  <option value="">Select…</option>
+                  <option>LLA (US version)</option>
+                  <option>Non-LLA (International)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Asking Price (₦)</label>
+            <input type="number" min="0" class="input" id="askingPrice" placeholder="What price do you have in mind? (optional)">
+            <div class="hint">Leave blank if you'd rather we make an offer.</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>Your Name *</label>
+              <input class="input" id="name" required placeholder="Full name">
+            </div>
+            <div class="field">
+              <label>Your Phone</label>
+              <input type="tel" class="input" id="phone" placeholder="08012345678 (optional, we'll use WhatsApp)">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Additional Notes</label>
+            <textarea class="textarea" id="notes" placeholder="Anything else we should know?"></textarea>
+          </div>
+
+          <button class="btn btn-success btn-lg btn-block" type="submit">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send Sell Request to WhatsApp
+          </button>
+          <p class="muted small text-center" style="margin-top:.75rem;">
+            Clicking will open WhatsApp with all your details pre-filled. You'll just hit send.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/sell.js"></script>
+</body>
+</html>

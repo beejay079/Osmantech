@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact · OSMANTECH</title>
+  <meta name="description" content="Visit us in Ogbomoso, call 08132664146, or send a message.">
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <section>
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> · <span>Contact</span></div>
+      <div class="eyebrow">Get in touch</div>
+      <h2 style="margin:.5rem 0 1rem;">We'd love to hear from you</h2>
+      <p class="muted mb-8" style="max-width:40rem;">Visit our Ogbomoso store, give us a ring, or drop a message below. Typical response time: under 2 hours during business hours.</p>
+
+      <div class="grid grid-3 mb-6">
+        <div class="card card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">📍</div>
+          <h4 style="margin-bottom:.5rem;">Visit us</h4>
+          <p>Keji House, beside Alice Place,<br>stadium Under G Road,<br>Ogbomoso, Oyo State</p>
+          <a href="https://maps.google.com/?q=Ogbomoso+Nigeria" target="_blank" class="btn btn-outline btn-sm mt-4">Get directions</a>
+        </div>
+        <div class="card card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">📞</div>
+          <h4 style="margin-bottom:.5rem;">Call us</h4>
+          <p><a href="tel:08132664146">08132664146</a><br><a href="tel:08037775657">08037775657</a></p>
+          <p class="muted small mt-4">Mon–Sat · 8:00 AM – 8:00 PM</p>
+        </div>
+        <div class="card card-body">
+          <div style="font-size:2rem;margin-bottom:.5rem;">💬</div>
+          <h4 style="margin-bottom:.5rem;">WhatsApp</h4>
+          <p>Fastest way to reach us. Chat directly for quotes, product availability, or support.</p>
+          <a href="https://wa.me/2348132664146" target="_blank" class="btn btn-success btn-sm mt-4">Chat now</a>
+        </div>
+      </div>
+
+      <div class="grid grid-2 gap-6">
+        <div class="card card-body">
+          <h3 style="margin-bottom:1rem;">Send us a message</h3>
+          <form id="contact-form">
+            <div class="field-row">
+              <div class="field"><label>Name *</label><input type="text" id="name" class="input" required></div>
+              <div class="field"><label>Phone</label><input type="tel" id="phone" class="input"></div>
+            </div>
+            <div class="field"><label>Email</label><input type="email" id="email" class="input"></div>
+            <div class="field"><label>Subject</label><input type="text" id="subject" class="input"></div>
+            <div class="field"><label>Message *</label><textarea id="body" class="textarea" required style="min-height:7rem;"></textarea></div>
+            <button class="btn btn-success btn-lg btn-block" type="submit" id="submit-btn">Send via WhatsApp</button>
+          </form>
+        </div>
+        <div>
+          <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;height:100%;min-height:450px;">
+            <iframe
+              src="https://www.google.com/maps?q=Ogbomoso,Nigeria&output=embed"
+              style="border:0;width:100%;height:100%;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Log in · OSMANTECH</title>
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="eyebrow">Admin only</div>
+      <h2 style="margin:.5rem 0 .5rem;font-size:2rem;">Log in</h2>
+      <p class="muted mb-6">Sign in to access the admin panel.</p>
+
+      <form id="login-form">
+        <div class="field"><label>Email</label><input type="email" id="email" class="input" required autocomplete="email"></div>
+        <div class="field"><label>Password</label><input type="password" id="password" class="input" required autocomplete="current-password"></div>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit-btn">Log in</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

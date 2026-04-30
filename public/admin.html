@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin · OSMANTECH</title>
+  <meta name="theme-color" content="#FF6A00">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A00'/%3E%3Ctext x='50%25' y='55%25' font-family='sans-serif' font-size='20' font-weight='700' fill='white' text-anchor='middle' dominant-baseline='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div id="nav-slot"></div>
+
+  <section>
+    <div class="container-wide">
+      <div class="crumbs"><a href="/">Home</a> · <a href="/dashboard">Dashboard</a> · <span>Admin</span></div>
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Control center</div>
+          <h2>Admin panel</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-4 mb-6" id="stats-grid">
+        <div class="skeleton" style="height:90px;"></div>
+        <div class="skeleton" style="height:90px;"></div>
+        <div class="skeleton" style="height:90px;"></div>
+        <div class="skeleton" style="height:90px;"></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="products">Listings</button>
+        <button class="tab" data-tab="orders">Orders</button>
+        <button class="tab" data-tab="repairs">Repairs</button>
+        <button class="tab" data-tab="swaps">Swaps</button>
+        <button class="tab" data-tab="users">Users</button>
+        <button class="tab" data-tab="messages">Messages</button>
+        <button class="tab" data-tab="visitors">Visitors</button>
+      </div>
+
+      <div id="tab-products" class="tab-panel"><div class="loading"></div></div>
+      <div id="tab-orders" class="tab-panel hidden"></div>
+      <div id="tab-repairs" class="tab-panel hidden"></div>
+      <div id="tab-swaps" class="tab-panel hidden"></div>
+      <div id="tab-users" class="tab-panel hidden"></div>
+      <div id="tab-messages" class="tab-panel hidden"></div>
+      <div id="tab-visitors" class="tab-panel hidden"></div>
+    </div>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/whatsapp.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
