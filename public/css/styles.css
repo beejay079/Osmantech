@@ -182,17 +182,49 @@ section { padding: 4.5rem 0; }
 .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.02em; line-height: 1; }
 .logo-text small { display: block; font-size: .65rem; color: var(--muted); font-weight: 500; letter-spacing: .05em; }
 .nav-menu { display: flex; gap: .25rem; align-items: center; }
-.nav-menu a { padding: .55rem .9rem; border-radius: var(--radius-sm); font-weight: 500; font-size: .92rem; color: var(--ink-2); transition: background .15s, color .15s; }
-.nav-menu a:hover, .nav-menu a.active { background: var(--orange-50); color: var(--orange); }
+.nav-menu a, .nav-menu .nav-link { padding: .55rem .9rem; border-radius: var(--radius-sm); font-weight: 500; font-size: .92rem; color: var(--ink-2); transition: background .15s, color .15s; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; }
+.nav-menu a:hover, .nav-menu a.active, .nav-menu .nav-link:hover { background: var(--orange-50); color: var(--orange); }
+
+/* Admin/Logout dropdown items */
+.nav-divider { height: 1px; background: var(--border); margin: .25rem 0; }
+.nav-link-admin { color: var(--blue) !important; font-weight: 600 !important; }
+.nav-link-logout { color: var(--danger) !important; font-weight: 600 !important; }
+
 .nav-actions { display: flex; gap: .5rem; align-items: center; }
 .icon-btn { position: relative; width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; transition: background .15s; }
 .icon-btn:hover { background: var(--surface-2); }
 .icon-btn .badge { position: absolute; top: -2px; right: -2px; background: var(--orange); color: white; border-radius: 999px; font-size: .65rem; font-weight: 700; padding: 1px 5px; min-width: 16px; text-align: center; border: 2px solid var(--surface); }
+
+/* Hamburger: hidden by default on desktop, shown when admin is logged in (body has class) or on mobile */
 .hamburger { display: none; }
+body.admin-mode .hamburger { display: grid; place-items: center; }
+
+/* Desktop: when the hamburger menu opens, show only admin items as a small dropdown */
+@media (min-width: 901px) {
+  body.admin-mode .nav-menu .nav-link-admin,
+  body.admin-mode .nav-menu .nav-link-logout,
+  body.admin-mode .nav-menu .nav-divider { display: none; }
+  body.admin-mode .nav-menu.open {
+    position: absolute; top: 100%; right: 1rem;
+    flex-direction: column; align-items: stretch;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: .5rem;
+    box-shadow: var(--shadow); min-width: 200px;
+    z-index: 50;
+  }
+  body.admin-mode .nav-menu.open > a:not(.nav-link-admin):not(.nav-link-logout) { display: none; }
+  body.admin-mode .nav-menu.open .nav-link-admin,
+  body.admin-mode .nav-menu.open .nav-link-logout,
+  body.admin-mode .nav-menu.open .nav-divider { display: block; }
+  body.admin-mode .nav-menu.open .nav-link-logout { display: block; }
+  body.admin-mode .nav-menu.open .nav-link-admin,
+  body.admin-mode .nav-menu.open .nav-link-logout { padding: .65rem 1rem; }
+}
+
 @media (max-width: 900px) {
-  .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-top: 1px solid var(--border); padding: .75rem 1rem; box-shadow: var(--shadow); }
+  .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-top: 1px solid var(--border); padding: .75rem 1rem; box-shadow: var(--shadow); z-index: 50; }
   .nav-menu.open { display: flex; }
-  .nav-menu a { padding: .8rem 1rem; border-radius: var(--radius-sm); }
+  .nav-menu a, .nav-menu .nav-link { padding: .8rem 1rem; border-radius: var(--radius-sm); }
   .hamburger { display: grid; place-items: center; }
 }
 

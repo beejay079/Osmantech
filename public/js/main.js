@@ -101,6 +101,8 @@
     const user = OS.user();
     const node = document.getElementById('nav-slot');
     if (!node) return;
+    // Mark body so CSS can show hamburger menu only when admin is logged in
+    document.body.classList.toggle('admin-mode', !!(user && user.role === 'admin'));
     node.outerHTML = `
       <div class="topbar">
         📞 ${OS.escape('08132664146 · 08037775657')} · 📍 Ogbomoso, Oyo State ·
@@ -119,6 +121,11 @@
             ${navLink('/swap', 'Swap', 'swap')}
             ${navLink('/fix', 'Fix', 'fix')}
             ${navLink('/contact', 'Contact', 'contact')}
+            ${ user && user.role === 'admin' ? `
+              <div class="nav-divider"></div>
+              <a href="/admin" class="nav-link nav-link-admin">⚙ Admin Panel</a>
+              <button class="nav-link nav-link-logout" onclick="OS.logout()">↩ Logout</button>
+            ` : '' }
           </div>
           <div class="nav-actions">
             <button class="icon-btn" onclick="OS.toggleTheme()" aria-label="Toggle theme">
@@ -130,13 +137,10 @@
             <a href="https://wa.me/2348132664146" target="_blank" class="btn btn-success btn-sm" style="display:inline-flex;align-items:center;gap:.4rem;">
               ${whatsappSvg()} <span style="font-size:.85rem;">Chat</span>
             </a>
-            ${ user && user.role === 'admin' ? `
-              <a href="/admin" class="btn btn-dark btn-sm">Admin</a>
-              <button class="btn btn-outline btn-sm" onclick="OS.logout()">Logout</button>
-            ` : `
+            ${ user && user.role === 'admin' ? '' : `
               <a href="/login" class="btn btn-outline btn-sm">Log in</a>
             ` }
-            <button class="hamburger icon-btn" onclick="document.getElementById('nav-menu').classList.toggle('open')">
+            <button class="hamburger icon-btn" onclick="document.getElementById('nav-menu').classList.toggle('open')" aria-label="Menu">
               ${menuSvg()}
             </button>
           </div>
@@ -406,6 +410,14 @@
     updateCartBadge();
     refreshNotifBadge();
     trackVisit();
+
+    // Close nav menu when clicking outside it
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('nav-menu');
+      if (!menu || !menu.classList.contains('open')) return;
+      if (e.target.closest('#nav-menu') || e.target.closest('.hamburger')) return;
+      menu.classList.remove('open');
+    });
   });
 
 })();
