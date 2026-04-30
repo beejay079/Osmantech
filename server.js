@@ -30,7 +30,11 @@ app.use('/api', rateLimit({
 }));
 
 // Serve uploads explicitly so they work cross-origin
-app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
+// Serve uploads from configurable directory (so a Railway volume can hold them)
+const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(__dirname, 'public', 'uploads');
+const fs = require('fs');
+if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+app.use('/uploads', express.static(UPLOADS_DIR));
 
 // ─── API routes ─────────────────────────────────────────────
 app.use('/api/auth',          require('./routes/auth'));

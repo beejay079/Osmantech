@@ -8,8 +8,13 @@ const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// On Railway/render/etc., set UPLOADS_DIR to your persistent volume path
+// (e.g. /data/uploads) so user-uploaded images survive redeploys.
+const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(__dirname, '..', 'public', 'uploads');
+if (!require('fs').existsSync(UPLOADS_DIR)) require('fs').mkdirSync(UPLOADS_DIR, { recursive: true });
+
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '..', 'public', 'uploads'),
+  destination: UPLOADS_DIR,
   filename (req, file, cb) {
     const ext = path.extname(file.originalname).toLowerCase().replace(/[^a-z0-9.]/g, '');
     const id  = crypto.randomBytes(12).toString('hex');
