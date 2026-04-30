@@ -1,5 +1,6 @@
 // routes/admin.js
 const express = require('express');
+const bcrypt  = require('bcryptjs');
 const { db } = require('../database');
 const { requireAdmin } = require('../middleware/auth');
 
@@ -57,6 +58,15 @@ router.put('/users/:id', (req, res) => {
     WHERE id = ?`).run(name || null, email ? email.toLowerCase().trim() : null, phone !== undefined ? phone : null, req.params.id);
   const user = db.prepare('SELECT id, name, email, role, phone, created_at FROM users WHERE id = ?').get(req.params.id);
   res.json({ user });
+});
+// PUT /api/admin/users/:id/password — admin sets a user's password directly
+router.put('/users/:id/password', (req, res) => {
+  const { password } = req.body || {};
+  if (!password || password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters' });
+  const exists = db.prepare('SELECT id FROM users WHERE id = ?').get(req.params.id);
+  if (!exists) return res.status(404).json({ error: 'User not found' });
+  db.prepare('UPDATE users SET password = ? WHERE id = ?').run(bcrypt.hashSync(password, 10), req.params.id);
+  res.json({ ok: true });
 });
 
 // ─── Products (all, including pending) ──────────────────────

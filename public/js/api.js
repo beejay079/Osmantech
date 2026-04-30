@@ -140,6 +140,7 @@ OS.admin = {
   removeUser: (id) => OS.api('/api/admin/users/' + id, { method: 'DELETE' }),
   setRole:  (id, role) => OS.api('/api/admin/users/' + id + '/role', { method: 'PUT', body: { role } }),
   updateUser: (id, body) => OS.api('/api/admin/users/' + id, { method: 'PUT', body }),
+  setPassword: (id, password) => OS.api('/api/admin/users/' + id + '/password', { method: 'PUT', body: { password } }),
   products: () => OS.api('/api/admin/products'),
   setProductStatus: (id, status) => OS.api('/api/admin/products/' + id + '/status', { method: 'PUT', body: { status } }),
   feature:  (id, featured) => OS.api('/api/admin/products/' + id + '/feature', { method: 'PUT', body: { featured } }),

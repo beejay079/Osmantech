@@ -433,6 +433,11 @@ window.openUserEditor = function (u) {
           </select>
           ${u.id === OS.user().id ? '<div class="hint" style="color:var(--warning);">⚠ Be careful — you are editing your own account.</div>' : ''}
         </div>
+        <div class="field">
+          <label>New password <span class="muted small">(leave blank to keep current)</span></label>
+          <input type="password" class="input" id="u-password" autocomplete="new-password" minlength="6" placeholder="At least 6 characters">
+          <div class="hint">${u.id === OS.user().id ? 'After saving, you may need to log in again with the new password.' : 'The user will need this new password to log in.'}</div>
+        </div>
         <div style="display:flex;gap:.5rem;justify-content:flex-end;">
           <button type="button" class="btn btn-outline" id="u-cancel">Cancel</button>
           <button type="submit" class="btn btn-primary">Save changes</button>
@@ -443,6 +448,10 @@ window.openUserEditor = function (u) {
   m.body.querySelector('#u-cancel').onclick = m.close;
   m.body.querySelector('#user-form').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const newPassword = m.body.querySelector('#u-password').value;
+    if (newPassword && newPassword.length < 6) {
+      return OS.toast('Password must be at least 6 characters', 'error');
+    }
     try {
       const newRole = m.body.querySelector('#u-role').value;
       await OS.admin.updateUser(u.id, {
@@ -451,7 +460,8 @@ window.openUserEditor = function (u) {
         phone: m.body.querySelector('#u-phone').value.trim()
       });
       if (newRole !== u.role) await OS.admin.setRole(u.id, newRole);
-      OS.toast('User updated', 'success');
+      if (newPassword) await OS.admin.setPassword(u.id, newPassword);
+      OS.toast(newPassword ? 'User updated — password changed' : 'User updated', 'success');
       m.close();
       loadUsers(document.getElementById('tab-users'));
     } catch (err) { OS.toast(err.message, 'error'); }
